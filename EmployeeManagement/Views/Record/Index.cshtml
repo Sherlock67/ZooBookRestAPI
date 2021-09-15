@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All Employee List</h2>
+@Html.ActionLink("New Employee Record", "Add", "Record")
+<table style="width:100%" class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Middle Name
+            </th>
+            <th>
+                Last Name
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.FirstName
+            </td>
+            <td>
+                @item.MiddleName
+            </td>
+            <td>
+                @item.LastName
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "Record", new { empid = @item.EmpID }, null)
+               
+                &nbsp; &nbsp; @Html.ActionLink("Delete", "DeleteRecord", "Record", new { empid = @item.EmpID }, null)
+
+            </td>
+        </tr>
+
+    }
+
+</table>
+
